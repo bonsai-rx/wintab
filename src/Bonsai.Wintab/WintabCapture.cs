@@ -1,44 +1,60 @@
-﻿using Bonsai;
-using System;
+﻿using System;
 using System.ComponentModel;
-using System.Collections.Generic;
-using System.Linq;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Drawing;
-using System.Threading;
-using System.Windows.Forms;
-using System.Reactive.Subjects;
 using WintabDN;
 
 namespace Bonsai.Wintab
 {
     /// <summary>
-    /// Represents an operator that produces a sequence of values.
+    /// Represents an operator that produces a sequence of data packets from a
+    /// Wacom tablet device.
     /// </summary>
-    [Description("Produces a sequence of values from a Wacom Device.")]
     [Combinator(MethodName = nameof(Generate))]
+    [Description("Produces a sequence of data packets from a Wacom tablet device.")]
     [WorkflowElementCategory(ElementCategory.Source)]
     public class WintabCapture
     {
         /// <summary>
-        /// "Produces a sequence of values from a Wacom Device."
+        /// Gets or sets a value indicating whether the Wacom tablet data will directly
+        /// control the operating system cursor position.
+        /// </summary>
+        public bool SystemCursor { get; set; }
+
+        /// <summary>
+        /// Produces a sequence of data packets from a Wacom tablet device.
         /// </summary>
         /// <returns>
-        /// WacomWintabDN data
+        /// An observable sequence of <see cref="WintabPacket"/> objects.
         /// </returns>
-        //private WintabDN.CWintabContext logContext = null;
-        //private CWintabData wtData = null;
-
-
-        public bool MouseControl { get; set; }
         public IObservable<WintabPacket> Generate()
         {
-            var wacom = new InterceptWintab(MouseControl);
-            return wacom.WacomData;
+            var systemCursor = SystemCursor;
+            return Observable.Create<WintabPacket>(observer =>
+            {
+                var logContext = CWintabInfo.GetDefaultSystemContext(ECTXOptionValues.CXO_MESSAGES);
+                if (systemCursor)
+                    logContext.Options |= (uint)ECTXOptionValues.CXO_SYSTEM;
+                else
+                    logContext.Options &= ~(uint)ECTXOptionValues.CXO_SYSTEM;
 
+                if (!logContext.Open())
+                    throw new InvalidOperationException("Failed to get default Wintab context.");
+
+                var wtData = new CWintabData(logContext);
+                wtData.SetWTPacketEventHandler((sender, e) =>
+                {
+                    uint pktID = (uint)e.Message.WParam;
+                    if (pktID != 0)
+                    {
+                        var pkt = wtData.GetDataPacket((uint)e.Message.LParam, pktID);
+                        if (pkt.pkContext != 0)
+                            observer.OnNext(pkt);
+                    }
+                });
+
+                return Disposable.Create(() => logContext.Close());
+            });
         }
-       
-
-        
     }
 }
