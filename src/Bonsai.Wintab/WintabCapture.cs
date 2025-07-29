@@ -42,7 +42,7 @@ namespace Bonsai.Wintab
                     throw new InvalidOperationException("Failed to get default Wintab context.");
 
                 var wtData = new CWintabData(logContext);
-                wtData.SetWTPacketEventHandler((sender, e) =>
+                EventHandler<MessageReceivedEventArgs> handler = (sender, e) =>
                 {
                     uint pktID = (uint)e.Message.WParam;
                     if (pktID != 0)
@@ -51,9 +51,14 @@ namespace Bonsai.Wintab
                         if (pkt.pkContext != 0)
                             observer.OnNext(pkt);
                     }
-                });
+                };
 
-                return Disposable.Create(() => logContext.Close());
+                wtData.SetWTPacketEventHandler(handler);
+                return Disposable.Create(() =>
+                {
+                    wtData.RemoveWTPacketEventHandler(handler);
+                    logContext.Close();
+                });
             });
         }
     }
