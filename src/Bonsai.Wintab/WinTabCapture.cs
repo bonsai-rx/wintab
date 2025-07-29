@@ -18,7 +18,7 @@ namespace Bonsai.Wintab
     [Description("Produces a sequence of values from a Wacom Device.")]
     [Combinator(MethodName = nameof(Generate))]
     [WorkflowElementCategory(ElementCategory.Source)]
-    public class WinTabCapture
+    public class WintabCapture
     {
         /// <summary>
         /// "Produces a sequence of values from a Wacom Device."
@@ -33,8 +33,7 @@ namespace Bonsai.Wintab
         public bool MouseControl { get; set; }
         public IObservable<WintabPacket> Generate()
         {
-            var wacom = new InterceptWinTab(MouseControl);
-
+            var wacom = new InterceptWintab(MouseControl);
             return wacom.WacomData;
 
         }

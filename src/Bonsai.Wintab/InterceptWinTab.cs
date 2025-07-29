@@ -19,7 +19,7 @@ namespace Bonsai.Wintab
     /// Class that hooks to Wintab and get callbacks from the wintab API
     /// Merges Wintab events into bonsai data streams 
     /// </summary>
-    public class InterceptWinTab
+    public class InterceptWintab
     {
         //ApplicationContext hookContext;
         //int hookCount;
@@ -44,7 +44,7 @@ namespace Bonsai.Wintab
         //    get { return instance.Value; }
         //}
 
-        public InterceptWinTab(bool mouseControl)
+        public InterceptWintab(bool mouseControl)
         {
             wacomData = new Subject<WintabPacket>();
             //hookCount = 0;
