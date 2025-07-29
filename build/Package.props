@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <PackageTags>Bonsai Rx Wintab Wacom Tablet</PackageTags>
+    <PackageProjectUrl>https://bonsai-rx.org/wintab</PackageProjectUrl>
+
+    <Authors>Bonsai Foundation</Authors>
+    <Copyright>Copyright © Bonsai Foundation CIC and Contributors</Copyright>
+  </PropertyGroup>
+</Project>
