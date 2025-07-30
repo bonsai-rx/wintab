@@ -107,6 +107,11 @@ namespace Bonsai.Wintab
     public enum WintabPacketStatus : uint
     {
         /// <summary>
+        /// Specifies that no status flags are set.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
         /// Specifies that the cursor is out of context.
         /// </summary>
         Proximity = EWintabPacketStatusValue.TPS_PROXIMITY,
