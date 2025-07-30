@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Title>Bonsai - Wintab</Title>
@@ -8,6 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Bonsai.Core" Version="2.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 
 </Project>
