@@ -18,7 +18,7 @@ namespace WintabDN
     /// <summary>
     /// Wintab Packet bits.
     /// </summary>
-    public enum EWintabPacketBit
+    internal enum EWintabPacketBit
     {
         PK_CONTEXT = 0x0001,    /* reporting context */
         PK_STATUS = 0x0002, /* status bits */
@@ -40,7 +40,7 @@ namespace WintabDN
     /// Wintab event messsages sent to an application.
     /// See Wintab Spec 1.4 for a description of these messages.
     /// </summary>
-    public enum EWintabEventMessage
+    internal enum EWintabEventMessage
     {
         WT_PACKET = 0x7FF0,
         WT_CTXOPEN = 0x7FF1,
@@ -56,7 +56,7 @@ namespace WintabDN
     /// <summary>
     /// Wintab packet status values.
     /// </summary>
-    public enum EWintabPacketStatusValue
+    internal enum EWintabPacketStatusValue
     {
         /// <summary>
         /// Specifies that the cursor is out of the context.
@@ -88,7 +88,7 @@ namespace WintabDN
     /// <summary>
     /// WintabPacket.pkButton codes.
     /// </summary>
-    public enum EWintabPacketButtonCode
+    internal enum EWintabPacketButtonCode
     {
         /// <summary>
         /// No change in button state.
@@ -110,7 +110,7 @@ namespace WintabDN
     /// Pen Orientation
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WTOrientation
+    internal struct WTOrientation
     {
         /// <summary>
         /// Specifies the clockwise rotation of the cursor about the 
@@ -135,7 +135,7 @@ namespace WintabDN
     /// Pen Rotation
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WTRotation
+    internal struct WTRotation
     {
         /// <summary>
         /// Specifies the pitch of the cursor.
@@ -157,7 +157,7 @@ namespace WintabDN
     /// Wintab data packet.  Contains the "Full Monty" for all possible data values.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WintabPacket
+    internal struct WintabPacket
     {
         /// <summary>
         /// Specifies the context that generated the event.
@@ -247,7 +247,7 @@ namespace WintabDN
     /// Common properties for control extension data transactions.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WTExtensionBase
+    internal struct WTExtensionBase
     {
         /// <summary>
         /// Specifies the Wintab context to which these properties apply.
@@ -274,7 +274,7 @@ namespace WintabDN
     /// Extension data for one Express Key.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WTExpKeyData
+    internal struct WTExpKeyData
     {
         /// <summary>
         /// Tablet index where control is found.
@@ -306,7 +306,7 @@ namespace WintabDN
     /// Extension data for one touch ring or one touch strip.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WTSliderData
+    internal struct WTSliderData
     {
         /// <summary>
         /// Tablet index where control is found.
@@ -343,7 +343,7 @@ namespace WintabDN
     /// All tablets have Express Keys.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WintabPacketExt
+    internal struct WintabPacketExt
     {
         /// <summary>
         /// Extension control properties common to all control types.
@@ -369,7 +369,7 @@ namespace WintabDN
     /// <summary>
     /// Class to support capture and management of Wintab daa.
     /// </summary>
-    public class CWintabData
+    internal class CWintabData
     {
         private CWintabContext m_context;
 

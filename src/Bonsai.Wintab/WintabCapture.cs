@@ -25,12 +25,12 @@ namespace Bonsai.Wintab
         /// Produces a sequence of data packets from a Wacom tablet device.
         /// </summary>
         /// <returns>
-        /// An observable sequence of <see cref="WintabPacket"/> objects.
+        /// An observable sequence of <see cref="WintabDataFrame"/> objects.
         /// </returns>
-        public IObservable<WintabPacket> Generate()
+        public IObservable<WintabDataFrame> Generate()
         {
             var systemCursor = SystemCursor;
-            return Observable.Create<WintabPacket>(observer =>
+            return Observable.Create<WintabDataFrame>(observer =>
             {
                 var logContext = CWintabInfo.GetDefaultSystemContext(ECTXOptionValues.CXO_MESSAGES);
                 if (systemCursor)
@@ -49,7 +49,7 @@ namespace Bonsai.Wintab
                     {
                         var pkt = wtData.GetDataPacket((uint)e.Message.LParam, pktID);
                         if (pkt.pkContext != 0)
-                            observer.OnNext(pkt);
+                            observer.OnNext(new(pkt));
                     }
                 };
 

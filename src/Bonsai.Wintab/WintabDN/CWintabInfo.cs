@@ -18,7 +18,7 @@ namespace WintabDN
     /// <summary>
     /// Class to access Wintab interface data.
     /// </summary>
-    public class CWintabInfo
+    internal class CWintabInfo
     {
         public const int MAX_STRING_SIZE = 256;
         public const int MAX_NUM_ATTACHED_TABLETS = 16;
@@ -141,7 +141,7 @@ namespace WintabDN
         /// <summary>
         /// Helper function to get digitizing or system default context.
         /// </summary>
-        /// <param name="contextType_I">Use WTI_DEFCONTEXT for digital context or WTI_DEFSYSCTX for system context</param>
+        /// <param name="contextIndex_I">Use WTI_DEFCONTEXT for digital context or WTI_DEFSYSCTX for system context</param>
         /// <returns>Returns the default context or null on error.</returns>
         private static CWintabContext GetDefaultContext(EWTICategoryIndex contextIndex_I)
         {

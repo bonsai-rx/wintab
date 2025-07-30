@@ -19,7 +19,7 @@ namespace WintabDN
     /// Managed version of AXIS struct.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WintabAxis
+    internal struct WintabAxis
     {
         /// <summary>
         /// Specifies the minimum value of the data item in the tablet's na-tive coordinates.
@@ -46,7 +46,7 @@ namespace WintabDN
     /// Array of WintabAxis objects.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WintabAxisArray
+    internal struct WintabAxisArray
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         public WintabAxis[] array;
@@ -55,7 +55,7 @@ namespace WintabDN
     /// <summary>
     /// Values to use when asking for X, Y or Z WintabAxis object.
     /// </summary>
-    public enum EAxisDimension
+    internal enum EAxisDimension
     {
         AXIS_X = EWTIDevicesIndex.DVC_X,
         AXIS_Y = EWTIDevicesIndex.DVC_Y,
@@ -65,7 +65,7 @@ namespace WintabDN
     /// <summary>
     /// Context option values.
     /// </summary>
-    public enum ECTXOptionValues
+    internal enum ECTXOptionValues
     {
         CXO_SYSTEM = 0x0001,
         CXO_PEN = 0x0002,
@@ -78,7 +78,7 @@ namespace WintabDN
     /// <summary>
     /// Context status values.
     /// </summary>
-    public enum ECTXStatusValues
+    internal enum ECTXStatusValues
     {
         CXS_DISABLED = 0x0001,
         CXS_OBSCURED = 0x0002,
@@ -88,7 +88,7 @@ namespace WintabDN
     /// <summary>
     /// Context lock values.
     /// </summary>
-    public enum ECTXLockValues
+    internal enum ECTXLockValues
     {
         CXL_INSIZE = 0x0001,
         CXL_INASPECT = 0x0002,
@@ -103,7 +103,7 @@ namespace WintabDN
     /// application or to Windows itself.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WintabLogContext
+    internal struct WintabLogContext
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]    //LCNAMELEN
         public string lcName;
@@ -145,7 +145,7 @@ namespace WintabDN
     /// <summary>
     /// Class to support access to Wintab context management.
     /// </summary>
-    public class CWintabContext
+    internal class CWintabContext
     {
         // Context data.
         private WintabLogContext m_logContext = new WintabLogContext();

@@ -26,7 +26,7 @@ namespace WintabDN
     /// <summary>
     /// Support for registering a Native Windows message with MessageEvents class.
     /// </summary>
-    public class MessageReceivedEventArgs : EventArgs
+    internal class MessageReceivedEventArgs : EventArgs
     {
         private readonly Message _message;
 
@@ -46,7 +46,7 @@ namespace WintabDN
     /// Windows native message handler, to provide support for detecting and
     /// responding to Wintab messages. 
     /// </summary>
-    public static class MessageEvents
+    internal static class MessageEvents
     {
         private static object _lock = new object();
         private static MessageWindow _window;

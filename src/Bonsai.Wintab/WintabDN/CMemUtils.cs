@@ -19,7 +19,7 @@ namespace WintabDN
     /// <summary>
     /// Provide utility methods for unmanaged memory management.
     /// </summary>
-    public class CMemUtils
+    internal class CMemUtils
     {
         /// <summary>
         /// Allocates a pointer to unmanaged heap memory of sizeof(val_I).

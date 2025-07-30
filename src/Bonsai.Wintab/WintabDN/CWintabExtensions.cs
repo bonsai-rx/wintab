@@ -21,7 +21,7 @@ namespace WintabDN
     /// <summary>
     /// Globals used for Wintab extensions.
     /// </summary>
-    public class WTExtensionsGlobal
+    internal class WTExtensionsGlobal
     {
         /// <summary>
         /// Maximum size of data buffer used in WTExtensionProperty.
@@ -33,7 +33,7 @@ namespace WintabDN
     /// <summary>
     /// Tag values used to get extension masks in GetWTExtensionMask
     /// </summary>
-    public enum EWTXExtensionTag
+    internal enum EWTXExtensionTag
     {
         // enums 0 - 5 are deprecated
         /// <summary>
@@ -56,7 +56,7 @@ namespace WintabDN
     /// Index values used for WTI extensions.
     /// For more information, see Wintab 1.4.
     /// </summary>
-    public enum EWTIExtensionIndex
+    internal enum EWTIExtensionIndex
     {
         /// <summary>
         /// Get a unique, null-terminated string describing the extension.
@@ -117,7 +117,7 @@ namespace WintabDN
     /// <summary>
     /// Tablet property values used with WTExtGet and WTExtSet
     /// </summary>
-    public enum EWTExtensionTabletProperty
+    internal enum EWTExtensionTabletProperty
     {
         /// <summary>
         /// number of physical controls on tablet
@@ -183,14 +183,14 @@ namespace WintabDN
     /// <summary>
     /// Tablet Icon values used with WTExtGet and WTExtSet
     /// </summary>
-    public enum EWTExtensionIconProperty
+    internal enum EWTExtensionIconProperty
     {
         TABLET_ICON_FMT_NONE = 0,          // No display
         TABLET_ICON_FMT_4BPP_GRAY = 1      // 4bpp grayscale
     }
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WTExtensionPropertyBase
+    internal struct WTExtensionPropertyBase
     {
         /// <summary>
         /// Structure version (reserved: always 0 for now)
@@ -232,7 +232,7 @@ namespace WintabDN
     /// Structure for reading/writing non-image Wintab extension data. (Wintab 1.4)
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WTExtensionProperty
+    internal struct WTExtensionProperty
     {
         public WTExtensionPropertyBase extBase;
 
@@ -248,7 +248,7 @@ namespace WintabDN
     /// Structure read/writing image Wintab extension data. (Wintab 1.4)
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct WTExtensionImageProperty
+    internal struct WTExtensionImageProperty
     {
         public WTExtensionPropertyBase extBase;
 
@@ -272,7 +272,7 @@ namespace WintabDN
     /// Similarly, an application can define actions for Touch Ring and Touch Strip button
     /// modes, and respond to user swipes on those controls to provide customized behavior.
     /// </summary>
-    public class CWintabExtensions
+    internal class CWintabExtensions
     {
         /// <summary>
         /// Return the extension mask for the given tag.

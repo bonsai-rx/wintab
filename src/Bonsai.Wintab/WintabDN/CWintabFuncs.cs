@@ -32,7 +32,7 @@ namespace WintabDN
     /// Holds native Window handle.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct HWND
+    internal struct HWND
     {
         [MarshalAs(UnmanagedType.I4)]
         public P_HWND value;
@@ -64,7 +64,7 @@ namespace WintabDN
     /// Holds Wintab packet identifier.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public class WTPKT
+    internal class WTPKT
     {
         [MarshalAs(UnmanagedType.U4)]
         P_FIX32 value;
@@ -87,7 +87,7 @@ namespace WintabDN
     /// Used for a fixed-point arithmetic value.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public class FIX32
+    internal class FIX32
     {
         [MarshalAs(UnmanagedType.U4)]
         P_FIX32 value;
@@ -110,7 +110,7 @@ namespace WintabDN
     /// Holds a Wintab context identifier.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public class HCTX
+    internal class HCTX
     {
         P_HWND value;
 
@@ -142,7 +142,7 @@ namespace WintabDN
     /// <summary>
     /// Index values for WTInfo wCategory parameter.
     /// </summary>
-    public enum EWTICategoryIndex
+    internal enum EWTICategoryIndex
     {
         WTI_INTERFACE = 1,
         WTI_STATUS = 2,
@@ -158,7 +158,7 @@ namespace WintabDN
     /// <summary>
     /// Index values for WTI_INTERFACE.
     /// </summary>
-    public enum EWTIInterfaceIndex
+    internal enum EWTIInterfaceIndex
     {
         IFC_WINTABID = 1,
         IFC_SPECVERSION = 2,
@@ -175,7 +175,7 @@ namespace WintabDN
     /// <summary>
     /// Index values for WTI_DEVICES
     /// </summary>
-    public enum EWTIDevicesIndex
+    internal enum EWTIDevicesIndex
     {
         DVC_NAME = 1,
         DVC_HARDWARE = 2,
@@ -201,7 +201,7 @@ namespace WintabDN
     /// <summary>
     /// Index values for WTI_CURSORS.
     /// </summary>
-    public enum EWTICursorsIndex
+    internal enum EWTICursorsIndex
     {
         CSR_NAME = 1,
         CSR_ACTIVE = 2,
@@ -228,7 +228,7 @@ namespace WintabDN
     /// <summary>
     /// Index used with CSR_NAME to get stylus types.
     /// </summary>
-    public enum EWTICursorNameIndex
+    internal enum EWTICursorNameIndex
     {
         CSR_NAME_PUCK = EWTICategoryIndex.WTI_CURSORS + 0,
         CSR_NAME_PRESSURE_STYLUS = EWTICategoryIndex.WTI_CURSORS + 1,
@@ -238,7 +238,7 @@ namespace WintabDN
     /// <summary>
     /// Index values for WTI contexts.
     /// </summary>
-    public enum EWTIContextIndex
+    internal enum EWTIContextIndex
     {
         CTX_NAME = 1,
         CTX_OPTIONS = 2,
@@ -280,7 +280,7 @@ namespace WintabDN
     /// P/Invoke wrappers for Wintab functions.
     /// See Wintab_v140.doc (Wintab 1.4 spec) and related Wintab documentation for details.
     /// </summary>
-    public class CWintabFuncs
+    internal class CWintabFuncs
     {
         /// <summary>
         /// This function returns global information about the interface in an application-supplied buffer. 
